@@ -1,0 +1,13 @@
+# docker registry in which the images are hosted
+registry: "richardsonlima/desafio-devops" # docker hub 
+
+# ingress configuration for the ui
+ingress:
+  hosts:
+    - desafiodevops.k8s.io
+
+# node selector for all components, if any
+nodeSelector:
+  enabled: false
+  selector:
+    reportportal: true

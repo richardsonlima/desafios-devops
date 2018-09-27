@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: desafio-devops-deploy
+  namespace: desafio-devops
+  labels:
+    app: desafio-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: desafio-devops
+  template:
+    metadata:
+      labels:
+        app: desafio-devops
+    spec:
+      containers:
+      - name: desafio-devops
+        image: richardsonlima/desafio-devops:__TAG__
+        env:
+         - name: KEY_MAP 
+           valueFrom:
+             configMapKeyRef:
+               name: desafio-devops-configmap 
+               key: KEY_MAP
+        ports:
+        - containerPort: 8089
+        - containerPort: 3000 
+

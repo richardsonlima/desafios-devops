@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: desafio-devops-service
+  namespace: desafio-devops 
+  annotations:
+
+spec:
+  selector:
+    app: desafio-devops 
+  ports:
+  - name: mainport
+    protocol: TCP
+    port: 8089
+    targetPort: 3000 
+  type: LoadBalancer
+

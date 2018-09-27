@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: desafio-devops
+  namespace: desafio-devops
+  labels: {{ include "labels" . | indent 4 }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: desafio-devops
+  serviceName: desafio-devops
+  template:
+    metadata:
+      labels:
+        component: desafio-devops
+    spec:
+      containers:
+      - env:
+        image: "{{ .Values.registry }}richardsonlima/desafio-devops:latest"
+        name: desafio-devops
+        ports:
+        - containerPort: 3000 
+          protocol: TCP
+{{ include "nodeSelector" . | indent 8 }}

@@ -1,0 +1,12 @@
+apiVersion: v1
+description: Desafio DevOps 
+name: desafio-devops
+version: 1.0.0
+sources:
+- https://github.com/richardsonlima/desafios-devops 
+keywords:
+- desafio-devops
+maintainers:
+  - name: richardsonlima
+    email: contato@richardsonlima.com.br
+engine: gotpl 
