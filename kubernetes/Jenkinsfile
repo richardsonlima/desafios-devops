@@ -33,7 +33,7 @@ node {
             dir(env.WORKSPACE) {
                 sh """
                     for services in `docker-compose -f kubernetes/docker-compose.yaml config --services`; do
-                        docker-compose stop -t1 \$services
+                        docker-compose -f kubernetes/docker-compose.yaml stop -t1 \$services
                     done
                 """
             }
