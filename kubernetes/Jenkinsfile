@@ -23,7 +23,7 @@ node {
         }
 
         stage('container_up') {
-            dir(env.WORKSPACE) {i
+            dir(env.WORKSPACE) {
                 sh(script: "docker-compose -f kubernetes/docker-compose.yaml up --build -d")
             }
         }
