@@ -24,6 +24,7 @@ node {
 
         stage('container_up') {
             dir(env.WORKSPACE) {
+                sh(script: "pwd")
                 sh(script: "docker-compose -f kubernetes/docker-compose.yaml up --build -d")
             }
         }
@@ -31,7 +32,7 @@ node {
         stage('container_stop') {
             dir(env.WORKSPACE) {
                 sh """
-                    for services in `docker-compose config --services`; do
+                    for services in `docker-compose -f kubernetes/docker-compose.yaml config --services`; do
                         docker-compose stop -t1 \$services
                     done
                 """
@@ -41,6 +42,7 @@ node {
         stage('push_container_to_registry') {
             dir(env.WORKSPACE) {
                 sh """
+                    pwd
                     docker build -t $REGISTRY_REPO:$IMAGE_VERSION -f kubernetes/Dockerfile .
                     docker push $REGISTRY_REPO:$IMAGE_VERSION
                 """
