@@ -23,13 +23,14 @@ node {
         }
 
         stage('container_up') {
-            dir(env.WORKSPACE/kubernetes) {
+            dir(env.WORKSPACE) {
+                sh(script: "cd kubernetes")
                 sh(script: "docker-compose up --build -d")
             }
         }
 
         stage('container_stop') {
-            dir(env.WORKSPACE/kubernetes) {
+            dir(env.WORKSPACE) {
                 sh """
                     for services in `docker-compose config --services`; do
                         docker-compose stop -t1 \$services
@@ -39,8 +40,9 @@ node {
         } 
 
         stage('push_container_to_registry') {
-            dir(env.WORKSPACE/kubernetes) {
+            dir(env.WORKSPACE) {
                 sh """
+                    cd kubernetes
                     docker build -t $REGISTRY_REPO:$IMAGE_VERSION -f Dockerfile .
                     docker push $REGISTRY_REPO:$IMAGE_VERSION
                 """
@@ -48,8 +50,9 @@ node {
         }
 
         stage('push_container_to_registry') {
-            dir(env.WORKSPACE/kubernetes) {
+            dir(env.WORKSPACE) {
                 sh """
+                    cd kubernetes
                     /usr/local/bin/helm install --namespace=desafio-devops ./helm
                 """
             }
