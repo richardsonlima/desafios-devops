@@ -1,3 +1,87 @@
+# Challenger 02: Kubernetes
+
+## Step 1. Install `kubernetes-docker-in-docker-cluster`. So it should be an intereting tool to delivery a k8s cluster locally 
+
+```console
+
+# Downloading kubectl (1.9.9 - for linux) 
+$ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.9.9/bin/linux/amd64/kubectl
+$ mv kubectl /usr/local/bin/
+
+$ wget https://raw.githubusercontent.com/richardsonlima/kubernetes-docker-in-docker-cluster/master/kubernetes-docker-in-docker-cluster-v1.9.sh
+$ chmod +x kubernetes-docker-in-docker-cluster-v1.9.sh
+
+$ # start the cluster
+$ ./kubernetes-docker-in-docker-cluster-v1.9.sh up
+
+$ # also you can start the cluster with 3 nodes
+$ NUM_NODES=3 ./kubernetes-docker-in-docker-cluster-v1.9.sh up
+
+$ ./kubernetes-docker-in-docker-cluster-v1.9.sh initial-config 
+
+$ kubectl --kubeconfig ~/.kube/config get pods --all-namespaces
+
+# Creating a namespace
+$ kubectl --kubeconfig ~/.kube/config create namespace `desafio-devops`
+
+$ kubectl --kubeconfig ~/.kube/config get nodes
+NAME          STATUS    ROLES     AGE       VERSION
+kube-master   Ready     master    57m       v1.9.9
+kube-node-1   Ready     <none>    56m       v1.9.9
+kube-node-2   Ready     <none>    56m       v1.9.9
+kube-node-3   Ready     <none>    56m       v1.9.9
+
+$ # k8s dashboard available at http://localhost:[aleatory-port]/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy
+
+$ # restart the cluster, this should happen much quicker than initial startup
+$ ./kubernetes-docker-in-docker-cluster-v1.9.sh up
+
+$ # stop the cluster
+$ ./kubernetes-docker-in-docker-cluster-v1.9.sh down
+
+$ # remove containers and volumes
+$ ./kubernetes-docker-in-docker-cluster-v1.9.sh clean
+```
+
+Terminal session recorded::
+[![asciicast](https://asciinema.org/a/195341.png)](https://asciinema.org/a/195341?autoplay=1) 
+
+## Step 2. Install `helm`  
+```console
+$ curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash
+$ gofish init
+$ gofish install helm
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm init
+```
+
+## Step 3. Install `jenkins` locally 
+
+```console
+
+```
+
+
+
+ ```console
+  $ kubectl port-forward svc/guestbook 8090:3000
+  Forwarding from 127.0.0.1:8090 -> 3000
+  Forwarding from [::1]:8090 -> 3000
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Desafio 02: Kubernetes
 
 ## Motivação
