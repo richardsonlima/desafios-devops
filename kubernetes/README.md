@@ -63,11 +63,11 @@ $ helm init
 
 ## Step 3. Install `jenkins` locally 
 
-On macOSx
+On macOS
 ```console
 brew install jenkins
 ```
-Using Docker
+or if you want to use Docker 
 
 ```console
 docker run \
