@@ -53,6 +53,11 @@ Terminal session recorded::
 [![asciicast](https://asciinema.org/a/195341.png)](https://asciinema.org/a/195341?autoplay=1) 
 
 ## Step 2. Install `helm`  
+On macOS
+```console
+brew install kubernetes-helm
+```
+On Linux  
 ```console
 $ curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash
 $ gofish init
