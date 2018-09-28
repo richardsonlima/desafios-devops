@@ -11,7 +11,7 @@ $ mv kubectl /usr/local/bin/
 
 # macOS
 $ brew install kubernetes-cli
-$kubectl version
+$ kubectl version
 
 
 $ wget https://raw.githubusercontent.com/richardsonlima/kubernetes-docker-in-docker-cluster/master/kubernetes-docker-in-docker-cluster-v1.9.sh
