@@ -1,6 +1,7 @@
 # Challenger 02: Kubernetes
 
-## Step 1. Install `kubernetes-docker-in-docker-cluster`. So it should be an intereting tool to delivery a k8s cluster locally 
+## Step 1. Install `kubernetes-docker-in-docker-cluster`. 
+So it should be an intereting tool to delivery a k8s cluster locally 
 
 ```console
 
