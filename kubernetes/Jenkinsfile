@@ -39,7 +39,7 @@ node {
             }
         } 
 
-        stage('push_container_to_registry') {
+        stage('push_container_image_to_registry') {
             dir(env.WORKSPACE) {
                 sh """
                     pwd
@@ -49,7 +49,7 @@ node {
             }
         }
 
-        stage('push_container_to_registry') {
+        stage('deploy_to_k8s_with_helm') {
             dir(env.WORKSPACE) {
                 sh """
                     cd kubernetes
