@@ -5,9 +5,14 @@ So it should be an intereting tool to delivery a k8s cluster locally
 
 ```console
 
-# Downloading kubectl (1.9.9 - for linux) 
+# Linux  
 $ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.9.9/bin/linux/amd64/kubectl
 $ mv kubectl /usr/local/bin/
+
+# macOS
+$ brew install kubernetes-cli
+$kubectl version
+
 
 $ wget https://raw.githubusercontent.com/richardsonlima/kubernetes-docker-in-docker-cluster/master/kubernetes-docker-in-docker-cluster-v1.9.sh
 $ chmod +x kubernetes-docker-in-docker-cluster-v1.9.sh
@@ -58,10 +63,23 @@ $ helm init
 
 ## Step 3. Install `jenkins` locally 
 
+On macOSx
 ```console
-
+brew install jenkins
 ```
+Using Docker
 
+```console
+docker run \
+  -u root \
+  --rm \
+  -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkinsci/blueocean
+```
 
 
  ```console
